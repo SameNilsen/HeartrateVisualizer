@@ -58,7 +58,7 @@ public class controller {
         // TokenManager
         // System.out.println("------.-.-.-.-.----"+token);
         strava = new Strava(token);
-        // System.out.println("------.-.-.-.-.--2--"+strava); 
+        System.out.println("------.-.-.-.-.--2--"+strava); 
 
         //  ASynchronous
         // AuthorisationAPI auth = API.authorisationInstance();

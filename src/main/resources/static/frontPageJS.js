@@ -81,7 +81,7 @@ function getTokens(authCode, scope) {
 };
 
 function nextFun() {
-    location.href = 'http://www.heartratevisualizer/stats.html';
+    location.href = 'http://www.heartratevisualizer.com/stats.html';
 };
 
 function showStart() {
