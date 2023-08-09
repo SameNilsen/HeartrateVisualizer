@@ -48,22 +48,17 @@ public class controller {
 
     @PostMapping("/getJavaToken")
     public void getJavaToken(@RequestBody CodePair code) {
-        System.out.println("----" + code.getCode() + " " + code.getScope()); // Fikk code!!!! // code.code??
-        // CacheAccess<Object, Object> sessionCache = JCS.getInstance("bbSessionCache");
+        // System.out.println("----" + code.getCode() + " " + code.getScope()); // Fikk code!!!! // code.code??
 
         //  Synchronous
-        // PropertyResourceBundle b = new 
         AuthorisationService service = new AuthorisationServiceImpl();
-        System.out.println("Dette er service: " + service);
+        // System.out.println("Dette er service: " + service);
         token = service.tokenExchange(110728, "f8a16daf2ca0c55cafea3da9fae8e3286fca07cd", code.getCode(), AuthorisationScope.VIEW_PRIVATE);
-        System.out.println("HEOHEOHEHIHEIHEHEI");
+        // System.out.println("HEOHEOHEHIHEIHEHEI");
         // TokenManager
-        System.out.println("------.-.-.-.-.----"+token);
+        // System.out.println("------.-.-.-.-.----"+token);
         strava = new Strava(token);
-        System.out.println("------.-.-.-.-.--2--"+strava); //  START FROM HERE
-        // StravaAthlete athlete = strava.getAthlete(id);
-        // strava.listAuthenticatedAthleteActivities(null, null)
-        // return "Hei";
+        // System.out.println("------.-.-.-.-.--2--"+strava); 
 
         //  ASynchronous
         // AuthorisationAPI auth = API.authorisationInstance();
@@ -85,7 +80,6 @@ public class controller {
 
     @PostMapping("/getActivities")
     public List getActivities(@RequestBody ActivitySpecs specs) {
-        // API api = new API(new );
         LocalDateTime endTime = LocalDateTime.ofEpochSecond(Long.valueOf(specs.endDate), 0, ZoneOffset.UTC);
         LocalDateTime startTime = LocalDateTime.ofEpochSecond(Long.valueOf(specs.startDate), 0, ZoneOffset.UTC);
         return strava.listAuthenticatedAthleteActivities(endTime, startTime, new Paging(1, 30));
@@ -93,18 +87,11 @@ public class controller {
 
     @PostMapping("/getZoneFromActivity")
     public List getZoneFromActivity(@RequestBody IDnZones idnzones) {
-        // API api = new API(new );
-        System.out.println("DETTE ER ID: " + idnzones.getID());
-        // strava.stream
-        // System.out.println("---- Hei, test HR stream:" + id + " ---: " + strava.getActivityStreams(Long.valueOf(id), StravaStreamResolutionType.HIGH, StravaStreamSeriesDownsamplingType.TIME, StravaStreamType.HEARTRATE));
-        // System.out.println("__" + strava.getActivityStreams(Long.valueOf(id), StravaStreamResolutionType.HIGH, StravaStreamSeriesDownsamplingType.TIME, StravaStreamType.HEARTRATE).get(0));
-        // System.out.println("TEST HER ::" + id + "__ " + strava.getActivityStreams(Long.valueOf(id)).get(0) + " ----STOPPP:D");
-        // List<Float> a = strava.getActivityStreams(Long.valueOf(id)).get(0);
-        // System.out.println("LENGDE ____ " + id + ", " + a.get(0).getData().size());
+        // System.out.println("DETTE ER ID: " + idnzones.getID());
 
         // if (idnzones.getzone1End() == -1){ 
         if (token.getAthlete().getPremium() == true && idnzones.getCustomZones() == false){
-            System.out.println(":.:.: " + strava.listActivityZones(Long.valueOf(idnzones.getID())) + " :,:,;");
+            // System.out.println(":.:.: " + strava.listActivityZones(Long.valueOf(idnzones.getID())) + " :,:,;");
             return strava.listActivityZones(Long.valueOf(idnzones.getID()));  
         }
         else{
@@ -113,8 +100,6 @@ public class controller {
             list.add(createActivityZone(distribution));
             return list;
         }
-        // System.out.println(":.:.: " + strava.listActivityZones(Long.valueOf(id)) + " :,:,;");
-        // return strava.listActivityZones(Long.valueOf(id));  
     }
 
     public StravaActivityZone createActivityZone(Integer[] distribution) {
@@ -156,7 +141,7 @@ public class controller {
         int riktigIndeks = 6;
         for (int i = 0; i < activityStream.size(); i++) {
             if (activityStream.get(i).getType().toString().equals("heartrate")){
-                System.out.println("RIKTIG INDEKS ER: " + i);
+                // System.out.println("RIKTIG INDEKS ER: " + i);
                 riktigIndeks = i;
                 break;
             }
@@ -164,12 +149,7 @@ public class controller {
                 System.out.println(String.valueOf(activityStream.get(i).getType()));
             }
         }
-        // StravaStream a = strava.getActivityStreams(Long.valueOf("9455718366")).get(6); // BYTT INDEX TIL FINNER HEARTRATE. TROR DET SKAL VÆRE 13504 punkter, altså fullstendig.
         StravaStream a = activityStream.get(riktigIndeks);
-        // StravaStream a = strava.getActivityStreams(Long.valueOf(id)).get(6); // BYTT INDEX TIL FINNER HEARTRATE. TROR DET SKAL VÆRE 13504 punkter, altså fullstendig.
-        // System.out.println("HEI " + a.getData() + "FERDIG A");
-        // System.out.println(".." + a.getData().get(0) + " + " + (Float.valueOf(a.getData().get(0))+3));
-        // System.out.println(Float.valueOf(a.getData().get(0))+3);
         List<Float> stream = a.getData();
         int zone1 = 0;
         int zone2 = 0;
@@ -193,7 +173,7 @@ public class controller {
                 zone5++;
             }
         }
-        System.out.println(" 1: " + zone1 + " 2: " + zone2 + " 3: " + zone3 + " 4: " + zone4 + " 5: " + zone5);
+        // System.out.println(" 1: " + zone1 + " 2: " + zone2 + " 3: " + zone3 + " 4: " + zone4 + " 5: " + zone5);
         Integer[] bb = {zone1, zone2, zone3, zone4, zone5};
         return bb;
     }

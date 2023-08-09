@@ -47,7 +47,7 @@ function CURLAuth() {
 };   
 
 function getTokens(authCode, scope) {
-    console.log("Dette er fra mainJS");
+    // console.log("Dette er fra mainJS");
 
     const packet = {
         code: authCode,
@@ -59,8 +59,8 @@ function getTokens(authCode, scope) {
             dataType: "json",
             contentType: "application/json; charset=utf-8"
     }).done(function(data){
-        console.log(data);
-        console.log("OLOO");
+        // console.log(data);
+        // console.log("OLOO");
     });
 
     // $.ajax({type: "POST", 
@@ -103,9 +103,9 @@ function listAct2() {
 
 function listAct() {
     // data: {before: , after: , per_page: 5},
-    console.log("Vi prøver å liste alle aktiviteter")
+    // console.log("Vi prøver å liste alle aktiviteter")
     var startDate = new Date($('#startDateSelectorID').val());
-    console.log("EKS DATO: " + startDate);
+    // console.log("EKS DATO: " + startDate);
     startDate = Math.round(startDate.getTime() / 1000);
     var endDate = new Date($('#endDateSelectorID').val());
     endDate = Math.round(endDate.getTime() / 1000);
@@ -133,8 +133,8 @@ function listAct() {
             dataType: "json",
             contentType: "application/json; charset=utf-8"
     }).done(function(data){
-        console.log(data);
-        console.log("HALOEN?!");
+        // console.log(data);
+        // console.log("HALOEN?!");
         formaterActs(data);
     });
 };
@@ -142,7 +142,7 @@ function listAct() {
 var customZones = false;
 function customZonesFun() {
     customZones = true;
-    console.log("Hei")
+    // console.log("Hei")
     listAct();
 }
 
@@ -163,7 +163,7 @@ function formaterActs(acts) {
     for (activity of acts){
         tempLength+=1;
     };
-    console.log("-----Lengde: "+tempLength);
+    // console.log("-----Lengde: "+tempLength);
     // for (activity of acts){
     //     console.log(activity.name);
     // }
@@ -193,14 +193,14 @@ function formaterActs(acts) {
                 zone4End: $("#zone4input").val(),
                 zone5End: $("#zone5input").val()
             };
-            console.log("TESTSONER");
-            console.log(IDnZones);
+            // console.log("TESTSONER");
+            // console.log(IDnZones);
         }
          
-        console.log(IDnZones);
+        // console.log(IDnZones);
         
         timeInZone = 1;
-        console.log("START");
+        // console.log("START");
         // $.ajax({type: "POST", 
         //     url: "/getZoneFromActivity",
         //     data: JSON.stringify(tempID),
@@ -216,7 +216,7 @@ function formaterActs(acts) {
             dataType: "json",
             contentType: "application/json; charset=utf-8"
         }).done(function(data){
-            console.log(1111);
+            // console.log(1111);
             customZones = false; //  For at premium folk skal kunne trykke øverste knapp.
             // console.log(length);
             // console.log(tempID);
@@ -235,7 +235,7 @@ function formaterActs(acts) {
                        + data[0].distributionBuckets[3].time + ", "
                        + data[0].distributionBuckets[4].time;
             // stupidTimeInZone(timeInZone);
-            console.log("HALLAballa" + timeInZone);
+            // console.log("HALLAballa" + timeInZone);
             table += "<tr><td>"+ dict[tempID].id +"</td>";
             table += "<td>"+ dict[tempID].name +"</td>";
             table += "<td>"+ dict[tempID].startDate +"</td>";
@@ -257,7 +257,7 @@ function formaterActs(acts) {
                 // $("#listActID").hidden = "true";
             };
         });
-        console.log("STOP");
+        // console.log("STOP");
         // table += "<tr><td>"+ activity.id +"</td>";
         // table += "<td>"+ activity.name +"</td>";
         // table += "<td>"+ timeInZone +"</td>";
@@ -308,7 +308,7 @@ function testGetHRZ() {
 function plotPie(){
     const xArray = [totalTimeZone1, totalTimeZone2, totalTimeZone3, totalTimeZone4, totalTimeZone5];
     const yArray = ["Zone1","Zone2","Zone3","Zone4","Zone5"];
-    console.log("Array"+xArray);
+    // console.log("Array"+xArray);
 
     const data = [{
         values: xArray,
@@ -342,7 +342,7 @@ function plotPie8020(){
     // }
     if ($('#zone1Box').is(":checked")){
         lowIntensity += totalTimeZone1;
-        console.log("CHECKED 111")
+        // console.log("CHECKED 111")
     }
     else{
         highIntensity += totalTimeZone1;
@@ -374,7 +374,7 @@ function plotPie8020(){
     // const xArray2 = [totalTimeZone1 + totalTimeZone2, totalTimeZone3 + totalTimeZone4 + totalTimeZone5];
     const xArray2 = [lowIntensity, highIntensity];
     const yArray2 = ["Low intensity","High intensity"];
-    console.log("Array"+xArray2);
+    // console.log("Array"+xArray2);
 
     const data = [{
         values: xArray2,
