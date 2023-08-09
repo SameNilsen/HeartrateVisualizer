@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Strava Greier hah</title>
+    <!-- <script type="application/javascript"> </script> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"> </script>
+    <script src="frontPageJS.js"> </script>
+    <script type="application/javascript"> 
+        $(function jassa() {      //  alternativ måte, $ istedet for jQuery
+            console.log("HeiNå")
+            var url_string = window.location;
+            var url = new URL(url_string);
+            var getcode = url.searchParams.get("code");
+            var scope = url.searchParams.get("scope");
+            $("#idsted").html(getcode + "<br>" + scope);
+            console.log(getcode + typeof getcode);
+            console.log("33");
+            getTokens(getcode, scope);
+            console.log("Også avsluttes det her snart da.")
+            nextFun();  //  Viderekobler til stats.hmtl
+            // url: "http://www.strava.com/oauth/token?client_id=110728&client_secret=f8a16daf2ca0c55cafea3da9fae8e3286fca07cd&code=" + getcode + "&grant_type=authorization_code"
+            // $.ajax({type: "POST", 
+            //         url: "https://www.strava.com/oauth/token",
+            //         data: {client_id: 110728, client_secret: "f8a16daf2ca0c55cafea3da9fae8e3286fca07cd", code: getcode, grant_type: "authorization_code"}
+            // }).done(function(data){
+            //     console.log(data);
+            //     console.log("halla33");
+            // });
+            // location.href = 'http://localhost:8080/stats.html';
+        });
+    </script>
+</head>
+<body id="mainBody">
+    <h1> Hollla</h1> 
+    <div id="idsted"> her er det tomt foreløpig</div>
+    <button id="testt" onclick="nextFun()">next</button>
+    
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <title>Strava Greier hah</title>
+    <!-- <script type="application/javascript"> </script> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"> </script>
+    <script src="frontPageJS.js"> </script>
+    <script src='https://cdn.plot.ly/plotly-2.24.1.min.js'></script>
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script type="application/javascript"> 
+        $(function jassa() {      //  alternativ måte, $ istedet for jQuery
+            showStart();
+        });
+    </script>
+</head>
+<body id="mainBody">
+    <h1 style="color:rgb(193, 86, 20);"> Heartrate distribution</h1>
+    <!-- <style>
+        label {
+            width:100px;
+            clear:left;
+            padding-right: 50;
+            float: left;
+        }
+        input{
+            float:left;
+        }
+    </style> -->
+
+
+<!-- <button id="listActID" onclick="listAct()">ListActivities</button> -->
+<!-- <button id="testCookieID2" onclick="getCookie('customersRefreshToken')">testCookieRefresh</button> -->
+<button class="btn btn-success" id="listActID" onclick="listAct()">Get activities</button>
+<button class="btn btn-success" id="testBUTN" onclick="testCURL()">TEST</button>
+<!-- <button id="testGetHRZID" onclick="testGetHRZ()">testGetHRZ</button> -->
+
+<br>
+<input type="date" id="startDateSelectorID" name="trip-start"
+value="2023-07-04"
+min="2018-01-01" max="2023-12-31">
+<input type="date" id="endDateSelectorID" name="trip-end"
+value="2023-07-20"
+min="2018-01-01" max="2023-12-31">
+
+<div id="actsID"> her er det tomt foreløpigg</div>
+    <table id="table" class="table table-striped table-bordered">
+        <tr>
+            <th>Film</th>
+            <th>Antall</th>
+            <th>Fornavn</th>
+            <th>Etternavn</th>
+            <th>Telefonnr</th>
+            <th>Epost</th>
+        </tr>
+    </table>
+    
+    <!-- <div id="totalsID"> her er det tomt foreløpigg</div> -->
+    <!-- START MED EGENDEFINERTE SONER -->
+    <!-- <form> -->
+        <fieldset id="zoneInputID" hidden>
+         <legend>Customize zones:</legend>
+         <p>Select upper limit for each zone. Upper limit for zone 5 (max heartrate) doesnt really matter. If you hava a 
+            premium user on Strava, the heartrate zones are gathered from there. This will give a more accurate result
+            because it uses the correct zones for each type of excercise. If you do not have premium you shoud set your zones here. 
+            Of course you can adjust your heartrate zones here even if you are premium.
+         </p>
+         <label for="zone1input">Zone1:</label>
+         <input type="text" id="zone1input" name="zone1input" maxlength="3" size="3" value="130">
+         <label for="zone2input">Zone2:</label>
+         <input type="text" id="zone2input" name="zone2input" maxlength="3" size="3" value="162">
+         <label for="zone3input">Zone3:</label>
+         <input type="text" id="zone3input" name="zone3input" maxlength="3" size="3" value="178">
+         <label for="zone4input">Zone4:</label>
+         <input type="text" id="zone4input" name="zone4input" maxlength="3" size="3" value="194">
+         <label for="zone5input">Zone5:</label>
+         <input type="text" id="zone5input" name="zone5input" maxlength="3" size="3" value="220">
+         <button class="btn btn-success" id="setZonesID" onclick="customZonesFun()">Set zones</button>
+        </fieldset>
+       <!-- </form> -->
+    <div id="plotDIV"> </div>
+    <!-- <style>
+            p,
+        label {
+        font:
+            1rem 'Fira Sans',
+            sans-serif;
+        }
+
+        input {
+        margin: 0.4rem;
+        }
+    </style> -->
+    <fieldset id="8020CheckBoxesFieldset" hidden>
+        <legend>Specify which zones are low intensity:</legend>
+        <div>
+          <input type="checkbox" id="zone1Box" name="zone1Box" checked />
+          <label for="zone1Box">Zone 1</label>
+        </div>
+        <div>
+            <input type="checkbox" id="zone2Box" name="zone2Box" checked />
+            <label for="zone2Box">Zone 2</label>
+        </div>
+        <div>
+            <input type="checkbox" id="zone3Box" name="zone3Box" checked />
+            <label for="zone3Box">Zone 3</label>
+        </div>
+        <div>
+            <input type="checkbox" id="zone4Box" name="zone4Box" />
+            <label for="zone4Box">Zone 4</label>
+        </div>
+        <div>
+            <input type="checkbox" id="zone5Box" name="zone5Box" />
+            <label for="zone5Box">Zone 5</label>
+        </div>
+        <button class="btn btn-success" id="reload8020GraphID" onclick="plotPie8020()">Reload 80/20 graph</button>
+    </fieldset>
+
+    <div id="plot9020DIV"> </div>
+    
+    <div id="idNamesOSV"> her er det tomt foreløpig</div>
+    <div id="totalsID"> her er det tomt foreløpigg</div>
+</body>
+</html>
