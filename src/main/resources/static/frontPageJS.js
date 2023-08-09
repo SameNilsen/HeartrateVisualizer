@@ -81,7 +81,7 @@ function getTokens(authCode, scope) {
 };
 
 function nextFun() {
-    location.href = 'http://localhost:8080/stats.html';
+    location.href = 'http://heartratevisualizer/stats.html';
 };
 
 function showStart() {
