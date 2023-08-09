@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 // import com.strava.api.v3.model.*;
 // import com.strava.api.v3.api.AthletesApi;
 
-import javastrava.api.v3.*;
+// import javastrava.api.v3.*;
 import javastrava.api.v3.auth.*;
 import javastrava.api.v3.auth.impl.retrofit.AuthorisationServiceImpl;
 import javastrava.api.v3.auth.model.Token;
