@@ -7,15 +7,15 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"> </script>
     <script src="frontPageJS.js"> </script>
     <script type="application/javascript"> 
-        $(function jassa() {      //  alternativ måte, $ istedet for jQuery
+        $(function jassa() {      //  alternativ måte, $ istedet for "jQuery"
             console.log("HeiNå")
             var url_string = window.location;
             var url = new URL(url_string);
             var getcode = url.searchParams.get("code");
             var scope = url.searchParams.get("scope");
-            $("#idsted").html(getcode + "<br>" + scope);
+            // $("#idsted").html(getcode + "<br>" + scope);
             console.log(getcode + typeof getcode);
-            console.log("33");
+            // console.log("33");
             getTokens(getcode, scope);
             console.log("Også avsluttes det her snart da.")
             nextFun();  //  Viderekobler til stats.hmtl
@@ -33,8 +33,8 @@
 </head>
 <body id="mainBody">
     <h1> REDIRECTING</h1> 
-    <div id="idsted"> her er det tomt foreløpig</div>
-    <button id="testt" onclick="nextFun()">next</button>
+    <!-- <div id="idsted"> her er det tomt foreløpig</div> -->
+    <!-- <button id="testt" onclick="nextFun()">next</button> -->
     
 </body>
 </html>

@@ -85,7 +85,7 @@ function nextFun() {
 };
 
 function showStart() {
-    $("#idNamesOSV").html(getCookie("customersAccessToken") + "<br>" + getCookie("customersRefreshToken") + "<br>" + getCookie("customersExpiresAt"));
+    // $("#idNamesOSV").html(getCookie("customersAccessToken") + "<br>" + getCookie("customersRefreshToken") + "<br>" + getCookie("customersExpiresAt"));
 }
 
 function listAct2() {
@@ -109,6 +109,14 @@ function listAct() {
     startDate = Math.round(startDate.getTime() / 1000);
     var endDate = new Date($('#endDateSelectorID').val());
     endDate = Math.round(endDate.getTime() / 1000);
+    if (startDate >= endDate){
+        let errorMessageDate = "Come on dude...";
+        $("#dateError").html(errorMessageDate);
+        return;
+    }
+    else{
+        $("#dateError").html();
+    }
 
     // $.ajax({type: "GET", 
     //         url: "https://www.strava.com/api/v3/athlete/activities",
@@ -141,6 +149,28 @@ function listAct() {
 
 var customZones = false;
 function customZonesFun() {
+    let errorMessageZoneInput = "Error. Your input is wrong."
+    if ($("#zone1input").val() == "" || $("#zone1input").val() < 0){
+        $("#zoneInputError").html(errorMessageZoneInput);
+        return;
+    }
+    if ($("#zone2input").val() == "" || $("#zone2input").val() < $("#zone1input").val()){
+        $("#zoneInputError").html(errorMessageZoneInput);
+        return;
+    }
+    if ($("#zone3input").val() == "" || $("#zone3input").val() < $("#zone2input").val()){
+        $("#zoneInputError").html(errorMessageZoneInput);
+        return;
+    }
+    if ($("#zone4input").val() == "" || $("#zone4input").val() < $("#zone3input").val()){
+        $("#zoneInputError").html(errorMessageZoneInput);
+        return;
+    }
+    if ($("#zone5input").val() == "" || $("#zone5input").val() < $("#zone4input").val()){
+        $("#zoneInputError").html(errorMessageZoneInput);
+        return;
+    }
+    $("#zoneInputError").html();
     customZones = true;
     // console.log("Hei")
     listAct();
