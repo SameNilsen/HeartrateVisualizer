@@ -3,8 +3,8 @@ package heartratevisualizer.app;
 // import org.springframework.configuration
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
+// import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+// import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
 
 // import com.createam.heroku.https.HttpsEnforcer;
 
