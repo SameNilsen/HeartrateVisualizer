@@ -11,7 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import jakarta.servlet.Filter;
 
 @Configuration
-public class WebSecurityConfig extends WebSecurityConfiguration {
+public class WebSecurityConfig{
 
   // @Override
   // protected void configure(HttpSecurity http) throws Exception {
