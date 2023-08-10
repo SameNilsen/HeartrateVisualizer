@@ -82,7 +82,7 @@ public class controller {
     public List getActivities(@RequestBody ActivitySpecs specs) {
         LocalDateTime endTime = LocalDateTime.ofEpochSecond(Long.valueOf(specs.endDate), 0, ZoneOffset.UTC);
         LocalDateTime startTime = LocalDateTime.ofEpochSecond(Long.valueOf(specs.startDate), 0, ZoneOffset.UTC);
-        return strava.listAuthenticatedAthleteActivities(endTime, startTime, new Paging(1, 30));
+        return strava.listAuthenticatedAthleteActivities(endTime, startTime, new Paging(1, 50));
     }
 
     @PostMapping("/getZoneFromActivity")

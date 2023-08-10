@@ -102,6 +102,7 @@ function listAct2() {
 };
 
 function listAct() {
+    $("#zoneInputError").html("");
     // data: {before: , after: , per_page: 5},
     // console.log("Vi prøver å liste alle aktiviteter")
     var startDate = new Date($('#startDateSelectorID').val());
@@ -112,12 +113,12 @@ function listAct() {
     console.log("Heitest");
     if (startDate >= endDate){
         let errorMessageDate = "Come on dude...";
-        console.log(errorMessageZoneInput);
+        console.log(errorMessageDate);
         $("#dateError").html(errorMessageDate);
         return;
     }
     else{
-        $("#dateError").html();
+        $("#dateError").html("");
     }
 
     // $.ajax({type: "GET", 
