@@ -8,10 +8,14 @@
     <script src="frontPageJS.js"> </script>
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4500911456830109"
+     crossorigin="anonymous"></script>
 
 </head>
 <body id="mainBody">
-    <h1 style="color:rgb(193, 86, 20);"> Welcome to my Page </h1>
+    <!-- <div style="border: 1px solid blue; height: 90px; margin: auto;"></div> -->
+    <h1 style="color:rgb(255, 145, 0); font-weight: bold; padding-top: 50px;"><center> Visualization of <br>80/20 rule for cardio </center></h1>
+    <!-- <h2 style="color:rgb(193, 86, 20);"> <center>Welcome to my Page </center></h2> -->
     <style>
         label {
             width:100px;
@@ -22,14 +26,17 @@
         input{
             float:left;
         }
+        #authButton2 {
+            text-align: center;
+        }
     </style>
     <!-- style="color:#c15614;" -->
     <br>    
-    <p1>This application aims to show and visualize how much time is spent in each heartrate zone. This will
+    <p1 style="color:rgb(255, 255, 255);"> <center>This application aims to show and visualize how much time is spent in each heartrate zone. This will
         be useful if you seek to follow the 80/20 rule in endurance/cardio training. The application collects
         your data from Strava, so it is required to give authorization for it to be able to access your
         activities from the Strava API. The authentication is done by Strava using OAuth2, and no personal 
-        data will be stored by the application. </p1>
+        data will be stored by the application. </center></p1>
     
     <br>
     <br>
@@ -37,7 +44,11 @@
     <!-- <button id="Knapp1" onclick="visMelding('Moren din')">Trykk meg</button> -->
     <!-- <button id="authButton" onclick="testCURL()">AuthenticateTest</button> -->
     <!-- <button id="authButton1" onclick="CURLAuth()">Authenticate</button> -->
-    <button class="btn btn-success" id="authButton2" onclick="window.location.href='http://www.strava.com/oauth/authorize?client_id=110728&response_type=code&redirect_uri=https://www.heartratevisualizer.com/exchange_token.html&approval_prompt=force&scope=activity:read_all';">Authenticate</button>
+    <div id="authButtonDIVID"> <center>
+    <button class="btn btn-success" id="authButton2" onclick="window.location.href='http://www.strava.com/oauth/authorize?client_id=110728&response_type=code&redirect_uri=https://www.heartratevisualizer.com/exchange_token.html&approval_prompt=force&scope=activity:read_all';">
+         Authorize</button>
+        </center></div>
+    <p><center> Please press Authorize to get started </center></p>
     <!-- <button id="testCookieID" onclick="testCookie()">testCookie</button> -->
     <!-- <button id="testCookieID2" onclick="getCookie('customersRefreshToken')">testCookieRefresh</button> -->
 </body>
