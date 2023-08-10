@@ -10,10 +10,7 @@ function visMelding(navn) {
 
 function testCURL() {
     console.log("HeI")
-    // $.get("/getJavaToken", function(data) {
-    //     console.log("OLOO");
-    //     console.log(data);
-    // });
+    
     const packet = {
         code: "Bollemann",
         scope: "Jolla"
@@ -27,13 +24,6 @@ function testCURL() {
         console.log(data);
         console.log("OLOO");
     });
-    // $.ajax({type: "GET", 
-    //         url: "https://www.strava.com/api/v3/athlete",
-    //         headers: {"Authorization": "Bearer 5e7bc99363ea0096592121a03db59214dafd795f"}
-    // }).done(function(data){
-    //     console.log(data);
-    //     console.log("HALLA");
-    // });
 };       
 
 function CURLAuth() {
@@ -63,21 +53,6 @@ function getTokens(authCode, scope) {
         // console.log("OLOO");
     });
 
-    // $.ajax({type: "POST", 
-    // url: "https://www.strava.com/oauth/token",
-    // data: {client_id: 110728, client_secret: "f8a16daf2ca0c55cafea3da9fae8e3286fca07cd", code: authCode, grant_type: "authorization_code"}
-    // }).done(function(data){
-    // console.log(data);
-    // // customersAccessToken = data.access_token;
-    // // customersRefreshToken = data.refresh_token;
-    // // customersExpiresAt = data.expires_at;
-    // document.cookie = "customersAccessToken="+data.access_token+";";
-    // document.cookie = "customersRefreshToken="+data.refresh_token+";";
-    // document.cookie = "customersExpiresAt="+data.expires_at+";";
-    // console.log(customersAccessToken);
-    // console.log(document.cookie);
-    // console.log("halla33");
-    // });
 };
 
 function nextFun() {
@@ -120,17 +95,6 @@ function listAct() {
     else{
         $("#dateError").html("");
     }
-
-    // $.ajax({type: "GET", 
-    //         url: "https://www.strava.com/api/v3/athlete/activities",
-    //         data: {before: endDate, after: startDate,per_page: 30, "access_token": getCookie("customersAccessToken")},
-    //         // headers: {"Authorization": getCookie("customersAccessToken")}
-    // }).done(function(data){
-    //     console.log(data);
-    //     $("#actsID").html(data);
-    //     formaterActs(data);
-    //     console.log("HALLA3");
-    // });
 
     const listActsPacket = {
         endDate: endDate,
@@ -301,12 +265,7 @@ function formaterActs(acts) {
     // $("#table").html(table);
 };
 
-function testCookie() {
-    document.cookie = "customersAccessToken="+"11aa11"+";";
-    document.cookie = "customersRefreshToken="+"22bb22"+";";
-    document.cookie = "customersExpiresAt="+33333+";";
-    console.log(document.cookie);
-};
+
 
 function getCookie(cookieName) {
     var key = cookieName + "=";
@@ -329,15 +288,7 @@ function stupidTimeInZone(a) {
     timeInZone = a;
 }
 
-function testGetHRZ() {
-    $.ajax({type: "GET", 
-            url: "https://www.strava.com/api/v3/activities/9468788432/zones",
-            headers: {"Authorization": "Bearer "+getCookie("customersAccessToken")}
-    }).done(function(data){
-        console.log(data);
-        console.log("HALLA");
-    });
-};
+
 
 function plotPie(){
     const xArray = [totalTimeZone1, totalTimeZone2, totalTimeZone3, totalTimeZone4, totalTimeZone5];
