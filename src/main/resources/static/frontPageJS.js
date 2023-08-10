@@ -109,8 +109,10 @@ function listAct() {
     startDate = Math.round(startDate.getTime() / 1000);
     var endDate = new Date($('#endDateSelectorID').val());
     endDate = Math.round(endDate.getTime() / 1000);
+    console.log("Heitest");
     if (startDate >= endDate){
         let errorMessageDate = "Come on dude...";
+        console.log(errorMessageZoneInput);
         $("#dateError").html(errorMessageDate);
         return;
     }
@@ -150,6 +152,7 @@ function listAct() {
 var customZones = false;
 function customZonesFun() {
     let errorMessageZoneInput = "Error. Your input is wrong."
+    console.log(errorMessageZoneInput);
     if ($("#zone1input").val() == "" || $("#zone1input").val() < 0){
         $("#zoneInputError").html(errorMessageZoneInput);
         return;
@@ -170,7 +173,7 @@ function customZonesFun() {
         $("#zoneInputError").html(errorMessageZoneInput);
         return;
     }
-    $("#zoneInputError").html();
+    // $("#zoneInputError").html();
     customZones = true;
     // console.log("Hei")
     listAct();
