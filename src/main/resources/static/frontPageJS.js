@@ -76,6 +76,40 @@ function listAct2() {
     });
 };
 
+function moveMonthDown() {
+    var m = $("#startDateSelectorID").val();
+    var tempMonth = m[5] + m[6];
+    var tempYear = m.substr(0,4);
+    if (tempMonth == 1){
+        tempMonth = 12;
+        tempYear-=1;
+    }
+    else{
+        tempMonth -= 1;
+    }
+    if (tempMonth < 10){
+        tempMonth = "0"+tempMonth;
+    }
+    $("#startDateSelectorID").val(tempYear+"-" + tempMonth + m.substr(7,10));
+}
+
+function moveMonthUp() {
+    var m = $("#endDateSelectorID").val();
+    var tempMonth = parseInt(m[5] + m[6]);
+    var tempYear = parseInt(m.substr(0,4));
+    if (tempMonth == 12){
+        tempMonth = 1;
+        tempYear+=1;
+    }
+    else{
+        tempMonth += 1;
+    }
+    if (tempMonth < 10){
+        tempMonth = "0"+tempMonth;
+    }
+    $("#endDateSelectorID").val(tempYear+"-" + tempMonth + m.substr(7,10));
+}
+
 function listAct() {
     $("#zoneInputError").html("");
     // data: {before: , after: , per_page: 5},
