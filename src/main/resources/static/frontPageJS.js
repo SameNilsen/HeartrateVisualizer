@@ -462,7 +462,7 @@ function formaterActsForLimit(acts) {
         let tempID = activity.id;
         var IDnLimit = {           //  IDnLimit
             id: tempID,
-            limit: customZones
+            limit: limit
         };
          
         console.log(IDnLimit);
@@ -474,8 +474,31 @@ function formaterActsForLimit(acts) {
         }).done(function(data){
             console.log("DETTE ER DATA: " + data);
             if (tempLength >= length){
-                
+                plotPieFromLimit8020();
             }
         })
     }
 }
+
+var lowIntensityFromLimit = 0;
+var highIntensityFromLimit = 0;
+function plotPieFromLimit8020(){
+    // const xArray2 = [totalTimeZone1 + totalTimeZone2, totalTimeZone3 + totalTimeZone4 + totalTimeZone5];
+    const xArray2 = [lowIntensityFromLimit, highIntensityFromLimit];
+    const yArray2 = ["Low intensity","High intensity"];
+    // console.log("Array"+xArray2);
+
+    const data = [{
+        values: xArray2,
+        labels: yArray2,
+        type: "pie"
+        }];
+
+        const layout = {title:"Intensity distribution",paper_bgcolor: "rgba(33,37,41,1)", font: {
+            family: "Courier New, monospace",
+            size: 18,
+            color: "#c15614"
+            }};
+
+        Plotly.newPlot("plot9020DIV", data, layout);
+};
