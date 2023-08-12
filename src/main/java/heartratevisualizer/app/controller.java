@@ -178,6 +178,46 @@ public class controller {
         return bb;
     }
 
+    @PostMapping("/getHRFromActivity")
+    public Integer[] getHRFromActivity(@RequestBody IDnLimit idnlimit) {
+        // System.out.println("DETTE ER ID: " + idnzones.getID());
+
+        String id = idnlimit.getID();
+        List<StravaStream> activityStream = strava.getActivityStreams(Long.valueOf(id));
+        int riktigIndeks = 6;
+        for (int i = 0; i < activityStream.size(); i++) {
+            if (activityStream.get(i).getType().toString().equals("heartrate")){
+                // System.out.println("RIKTIG INDEKS ER: " + i);
+                riktigIndeks = i;
+                break;
+            }
+            else{
+                System.out.println(String.valueOf(activityStream.get(i).getType()));
+            }
+        }
+        StravaStream a = activityStream.get(riktigIndeks);
+        List<Float> stream = a.getData();
+
+        int lowIntensity = 0;
+        int highIntensity = 0;
+        for (int i = 0; i < stream.size(); i++) {
+            if (stream.get(i) <= idnlimit.getLimit()) {
+                lowIntensity++;
+            }
+            else if (stream.get(i) > idnlimit.getLimit()) {
+                highIntensity++;
+            }
+        }
+
+        Integer[] LH = {lowIntensity, highIntensity};
+        return LH; 
+    }
+
+
+
+
+
+
     @PostMapping("/testCurl")
     public void testCurl() {
         System.out.println("STARTE HER");   //  9389417647
@@ -235,36 +275,4 @@ public class controller {
     }
 
 
-    @GetMapping("/helloo")     //  http://localhost:8080/helloo
-    public String helloo() {
-
-        return "Hello bolla;)";
-    }
-
-    @GetMapping("/error")
-    public String error() {
-
-        return "Hva prøver du på nå??";
-    }
-
-    @GetMapping("/navn")
-    public String navn(String name) {
-        return "Halla " + name;
-    }
-
-    @GetMapping("/getStudent")
-    public String getStudent() {
-        return "Dette er en student: Einar";
-    }
-    
-    @PostMapping("/setStudent")
-    public String setStudent(@RequestBody String student) {  //  Bruker PostMan. Skriver noe i body, denne funksjonen henter det.
-        System.out.println(student);
-        return "Hei " + student + ", Object received.";
-    }
-
-    // @GetMapping("/testCURL")
-    // public String testCURL() {
-    //     return "Dette er ein test:D";
-    // }
 }

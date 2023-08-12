@@ -409,3 +409,73 @@ function plotPie8020(){
 
         Plotly.newPlot("plot9020DIV", data, layout);
 };
+
+function getActsForLimit() {
+    var startDate = new Date($('#startDateSelectorID').val());
+    startDate = Math.round(startDate.getTime() / 1000);
+    var endDate = new Date($('#endDateSelectorID').val());
+    endDate = Math.round(endDate.getTime() / 1000);
+    if (startDate >= endDate){
+        let errorMessageDate = "Come on dude...";
+        console.log(errorMessageDate);
+        $("#dateError").html(errorMessageDate);
+        return;
+    }
+    else{
+        $("#dateError").html("");
+    }
+
+    const listActsPacket = {
+        endDate: endDate,
+        startDate: startDate,
+        perPage: 30
+    };
+
+    $.ajax({type: "POST", 
+            url: "/getActivities",
+            data: JSON.stringify(listActsPacket),
+            dataType: "json",
+            contentType: "application/json; charset=utf-8"
+    }).done(function(data){
+        // console.log(data);
+        // console.log("HALOEN?!");
+        formaterActsForLimit(data);
+    });
+};
+
+function formaterActsForLimit(acts) {
+    var tempLength = 0;
+    for (activity of acts){
+        tempLength+=1;
+    };
+    // console.log("-----Lengde: "+tempLength);
+    // for (activity of acts){
+    //     console.log(activity.name);
+    // }
+    var limit = $("#limitID").val();
+    const length = tempLength;
+    tempLength = 0;
+    var dict = {};
+    for (activity of acts){
+        dict[activity.id] = activity;
+        tempLength+=1;
+        let tempID = activity.id;
+        var IDnLimit = {           //  IDnLimit
+            id: tempID,
+            limit: customZones
+        };
+         
+        console.log(IDnLimit);
+        $.ajax({type: "POST", 
+            url: "/getHRFromActivity",
+            data: JSON.stringify(IDnLimit),
+            dataType: "json",
+            contentType: "application/json; charset=utf-8"
+        }).done(function(data){
+            console.log("DETTE ER DATA: " + data);
+            if (tempLength >= length){
+                
+            }
+        })
+    }
+}

@@ -94,7 +94,8 @@ min="2018-01-01" max="2023-12-31">
         </fieldset>
     <div id="plotDIV"> </div>
     
-    <fieldset id="8020CheckBoxesFieldset" hidden>
+    <div style="display: inline-block;">
+    <fieldset id="8020CheckBoxesFieldset" >
         <legend>Specify which zones are low intensity:</legend>
         <div>
           <input type="checkbox" id="zone1Box" name="zone1Box" checked />
@@ -118,6 +119,14 @@ min="2018-01-01" max="2023-12-31">
         </div>
         <button class="btn btn-success" id="reload8020GraphID" onclick="plotPie8020()">Reload 80/20 graph</button>
     </fieldset>
+    </div>
+    <div style="position: relative;">
+    <div style="position:absolute; right: 0;">
+        <label for="limitID">Limit:</label>
+        <input type="text" id="limitID" name="limitID" maxlength="3" size="3" value="140">
+        <button class="btn btn-success" id="setLimitID" onclick="getActsForLimit()">Set limit</button>
+    </div>
+    </div>
 
     <div id="plot9020DIV"> </div>
     
