@@ -60,6 +60,24 @@ function nextFun() {
 };
 
 function showStart() {
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    today = yyyy + '-' + mm + '-' + dd;
+    $("#endDateSelectorID").val(today);
+    if (mm == 1){
+        mm = 12;
+        yyyy-=1;
+    }
+    else{
+        mm -= 1;
+    }
+    if (mm < 10){
+        mm = "0"+mm;
+    }
+    $("#startDateSelectorID").val(yyyy + '-' + mm + '-' + dd);
     // $("#idNamesOSV").html(getCookie("customersAccessToken") + "<br>" + getCookie("customersRefreshToken") + "<br>" + getCookie("customersExpiresAt"));
 }
 
@@ -465,14 +483,12 @@ function formaterActsForLimit(acts) {
             limit: limit
         };
          
-        console.log(IDnLimit);
         $.ajax({type: "POST", 
             url: "/getHRFromActivity",
             data: JSON.stringify(IDnLimit),
             dataType: "json",
             contentType: "application/json; charset=utf-8"
         }).done(function(data){
-            console.log("DETTE ER DATA: " + data);
             lowIntensityFromLimit += data[0];
             highIntensityFromLimit += data[1];
             if (tempLength >= length){
