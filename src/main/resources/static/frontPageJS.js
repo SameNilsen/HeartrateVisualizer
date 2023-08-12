@@ -94,8 +94,9 @@ function listAct2() {
     });
 };
 
-function moveMonthDown() {
-    var m = $("#startDateSelectorID").val();
+function moveMonthDown(arg) {
+    console.log("#"+arg);
+    var m = $("#"+arg).val();
     var tempMonth = m[5] + m[6];
     var tempYear = m.substr(0,4);
     if (tempMonth == 1){
@@ -108,11 +109,11 @@ function moveMonthDown() {
     if (tempMonth < 10){
         tempMonth = "0"+tempMonth;
     }
-    $("#startDateSelectorID").val(tempYear+"-" + tempMonth + m.substr(7,10));
+    $("#"+arg).val(tempYear+"-" + tempMonth + m.substr(7,10));
 }
 
-function moveMonthUp() {
-    var m = $("#endDateSelectorID").val();
+function moveMonthUp(arg) {
+    var m = $("#"+arg).val();
     var tempMonth = parseInt(m[5] + m[6]);
     var tempYear = parseInt(m.substr(0,4));
     if (tempMonth == 12){
@@ -125,7 +126,7 @@ function moveMonthUp() {
     if (tempMonth < 10){
         tempMonth = "0"+tempMonth;
     }
-    $("#endDateSelectorID").val(tempYear+"-" + tempMonth + m.substr(7,10));
+    $("#"+arg).val(tempYear+"-" + tempMonth + m.substr(7,10));
 }
 
 function listAct() {
