@@ -473,6 +473,8 @@ function formaterActsForLimit(acts) {
             contentType: "application/json; charset=utf-8"
         }).done(function(data){
             console.log("DETTE ER DATA: " + data);
+            lowIntensityFromLimit += data[0];
+            highIntensityFromLimit += data[1];
             if (tempLength >= length){
                 plotPieFromLimit8020();
             }
