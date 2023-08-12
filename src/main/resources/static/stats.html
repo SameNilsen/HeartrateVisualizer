@@ -77,8 +77,11 @@
 <div style="text-align: center;">
 <button class="btn btn-success" id="listActID" onclick="listAct()">Get activities</button>
 </div>
+<br>
+<div id="resultH1ID" hidden><h2>Results:</h2>
+<h4>1: The activities included:</h4></div>
 
-<div id="actsID" style="height:150px;border:1px solid #ccc;overflow:auto;">
+<div id="actsID" style="height:150px;border:1px solid #ccc;overflow:auto;" hidden>
     <table id="table" class="table table-striped table-bordered">
         <tr>
             <th>ID</th>
@@ -89,11 +92,14 @@
         </tr>
     </table>
 </div>
+
+<h4 id="resultH2ID" hidden>2: A graph of zone distribution:</h4>
     
+<div id="plotDIV"> </div>
     <!-- <div id="totalsID"> her er det tomt foreløpigg</div> -->
     <!-- START MED EGENDEFINERTE SONER -->
         <fieldset id="zoneInputID" hidden>
-         <legend>Customize zones:</legend>
+         <legend style="font-size: large;">Customize zones:</legend>
          <p>Select upper limit for each zone. Upper limit for zone 5 (max heartrate) doesnt really matter. If you hava a 
             premium user on Strava, the heartrate zones are gathered from there. This will give a more accurate result
             because it uses the correct zones for each type of excercise. If you do not have premium you shoud set your zones here. 
@@ -113,12 +119,16 @@
          <br>
          <div id="zoneInputError"></div>
         </fieldset>
-    <div id="plotDIV"> </div>
-    
-    <div style="text-align: center;">
+
+<div id="resultH3ID" hidden><h4>3: The graph of intensity distribution:</h4>
+<p>Check if you follow the 80/20 rule!</p></div>
+
+<div id="plot9020DIV"> </div>
+
+    <div id="HLIid" style="text-align: center;" hidden>
     <div style="vertical-align: middle; display: inline-block; padding: 1rem 1rem;">
     <fieldset id="8020CheckBoxesFieldset" >
-        <legend>Specify which zones are low intensity:</legend>
+        <legend>You may also specify which zones are low intensity:</legend>
         <div>
           <input type="checkbox" id="zone1Box" name="zone1Box" checked />
           <label for="zone1Box">Zone 1</label>
@@ -152,7 +162,6 @@
 </div>
     <!-- vertical-align: middle; display: inline-block; border: 1px solid blue; padding: 1rem 1rem; -->
 
-    <div id="plot9020DIV"> </div>
     
     <div id="idNamesOSV"> </div>
     <div id="totalsID"> </div>

@@ -303,8 +303,13 @@ function formaterActs(acts) {
                 plotPie();
                 plotPie8020();
                 // $("#8020CheckBoxesFieldset").hidden = false;
-                document.getElementById("8020CheckBoxesFieldset").hidden = false;
+                document.getElementById("HLIid").hidden = false;
                 document.getElementById("zoneInputID").hidden = false;
+
+                document.getElementById("resultH1ID").hidden = false;
+                document.getElementById("actsID").hidden = false;
+                document.getElementById("resultH2ID").hidden = false;
+                document.getElementById("resultH3ID").hidden = false;
                 // $("#listActID").hidden = "true";
             };
         });
