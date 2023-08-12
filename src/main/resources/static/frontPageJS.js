@@ -468,6 +468,8 @@ function getActsForLimit() {
 };
 
 function formaterActsForLimit(acts) {
+    lowIntensityFromLimit = 0;
+    highIntensityFromLimit = 0;
     var tempLength = 0;
     for (activity of acts){
         tempLength+=1;
