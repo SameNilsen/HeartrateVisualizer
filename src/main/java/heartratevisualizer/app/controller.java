@@ -45,6 +45,10 @@ public class controller {
     String access_token;
     Token token;
     Strava strava;
+    List activities;
+
+    // TODO:
+    // lagre id og heartratestream i map. For å ikke gjøre så mange kall til api.
 
     @PostMapping("/getJavaToken")
     public void getJavaToken(@RequestBody CodePair code) {
@@ -53,7 +57,7 @@ public class controller {
         //  Synchronous
         AuthorisationService service = new AuthorisationServiceImpl();
         // System.out.println("Dette er service: " + service);
-        token = service.tokenExchange(110728, "f8a16daf2ca0c55cafea3da9fae8e3286fca07cd", code.getCode(), AuthorisationScope.VIEW_PRIVATE);
+        token = service.tokenExchange(110728, System.getenv("CLIENT_SECRET"), code.getCode(), AuthorisationScope.VIEW_PRIVATE);
         // System.out.println("HEOHEOHEHIHEIHEHEI");
         // TokenManager
         // System.out.println("------.-.-.-.-.----"+token);
@@ -82,7 +86,8 @@ public class controller {
     public List getActivities(@RequestBody ActivitySpecs specs) {
         LocalDateTime endTime = LocalDateTime.ofEpochSecond(Long.valueOf(specs.endDate), 0, ZoneOffset.UTC);
         LocalDateTime startTime = LocalDateTime.ofEpochSecond(Long.valueOf(specs.startDate), 0, ZoneOffset.UTC);
-        return strava.listAuthenticatedAthleteActivities(endTime, startTime, new Paging(1, 50));
+        activities = strava.listAuthenticatedAthleteActivities(endTime, startTime, new Paging(1, 50));
+        return activities;
     }
 
     @PostMapping("/getZoneFromActivity")
